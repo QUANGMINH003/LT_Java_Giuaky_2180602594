@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Phong Ban</title>
+    <th:block th:replace="layout::link-css"></th:block>
+</head>
+<body>
+<th:block th:replace="layout::header"></th:block>
+<div class="container">
+    <h1>Edit Phong Ban</h1>
+    <form th:action="@{/phongbans/edit/{id}(id=${phongban.id})}"
+          th:object="${phongban}" method="post">
+        <div class="col-6 mb-3">
+            <label class="form-label" for="maphong">Ma phong:</label>
+            <input class="form-control" type="text" th:field="*{maphong}" id="maphong">
+            <span th:if="${#fields.hasErrors('maphong')}" th:errors="*{maphong}" class="text-danger"></span>
+        </div>
+
+        <div class="col-6 mb-3">
+            <label class="form-label" for="tenphong">Ten phong:</label>
+            <input class="form-control" type="text" th:field="*{tenphong}" id="tenphong">
+            <span th:if="${#fields.hasErrors('tenphong')}" th:errors="*{tenphong}" class="text-danger"></span>
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Cập nhật">
+        <a th:href="@{/phongbans}" class="btn btn-primary">Trở về</a>
+    </form>
+</div>
+
+<th:block th:replace="layout::footer"></th:block>
+</body>
+</html>

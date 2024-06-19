@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Nhan Vien</title>
+    <th:block th:replace="layout::link-css"></th:block>
+</head>
+<body>
+<th:block th:replace="layout::header"></th:block>
+<div class="container">
+    <h1>Add Nhan Vien</h1>
+    <form th:action="@{/nhanviens/add}" th:object="${nhanvien}" method="post">
+        <div class="col-6 mb-3">
+            <label class="form-label" for="manv">Ma NV:</label>
+            <input class="form-control" type="text" th:field="*{manv}" id="manv">
+            <span th:if="${#fields.hasErrors('manv')}" th:errors="*{manv}" class="text-danger"></span>
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="ten">Ten NV:</label>
+            <input class="form-control" type="text" th:field="*{ten}" id="ten">
+            <span th:if="${#fields.hasErrors('ten')}" th:errors="*{ten}" class="text-danger"></span>
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="gioitinh">Gioi tinh:</label>
+            <input class="form-control" type="text" th:field="*{gioitinh}" id="gioitinh">
+            <span th:if="${#fields.hasErrors('gioitinh')}" th:errors="*{gioitinh}" class="text-danger"></span>
+        </div>
+
+        <div class="col-6 mb-3">
+            <label class="form-label" for="noisinh">Noi sinh:</label>
+            <input class="form-control" type="text" th:field="*{noisinh}" id="noisinh">
+           <!-- <span th:if="${#fields.hasErrors('noisinh')}" th:errors="*{noisinh}" class="text-danger"></span>-->
+        </div>
+
+        <div class="col-6 mb-3">
+            <label class="form-label" for="luong">Luong:</label>
+            <input class="form-control" type="text" th:field="*{luong}" id="luong">
+            <!--<span th:if="${#fields.hasErrors('luong')}" th:errors="*{luong}" class="text-danger"></span>-->
+        </div>
+
+        <div class="col-6 mb-3">
+            <label class="form-label" for="phongban">Phong ban:</label>
+            <select class="form-control"  id="phongban" name="phongban.id">
+                <option value="">-- Select Phong ban --</option>
+                <option th:each="phongban : ${phongbans}" th:value="${phongban.id}"
+                        th:text="${phongban.tenphong}"></option>
+            </select>
+            <span th:if="${#fields.hasErrors('phongban')}" th:errors="*{phongban}" class="text-danger"></span>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Thêm mới">
+        <a th:href="@{/nhanviens}" class="btn btn-primary">Trở về</a>
+    </form>
+
+</div>
+
+<th:block th:replace="layout::footer"></th:block>
+</body>
+</html>
