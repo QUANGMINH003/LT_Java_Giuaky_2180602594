@@ -21,7 +21,8 @@
         <tr th:each="nhanvien: ${nhanviens}">
             <td th:text="${nhanvien.manv}"></td>
             <td th:text="${nhanvien.ten}"></td>
-            <td th:text="${nhanvien.gioitinh}"></td>
+            <!--<td th:text="${nhanvien.gioitinh}"></td>-->
+            <td ><img th:src="${nhanvien.gioitinh == 'Nam' || nhanvien.gioitinh == 'NAM' ? 'https://png.pngtree.com/element_our/png_detail/20181022/male-worker-icon-graphic-png_189128.jpg' : 'https://png.pngtree.com/png-clipart/20190516/original/pngtree-female-worker-icon-vector-png-image_3668950.jpg'}" alt="Gender Icon" style="width: 70px; height: 80px;"></td>
             <td th:text="${nhanvien.noisinh}"></td>
             <td th:text="${nhanvien.phongban.tenphong}"></td>
             <td th:text="${nhanvien.luong}"></td>
